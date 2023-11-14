@@ -1,9 +1,22 @@
 const express = require("express")
 const app = express();
 require('dotenv').config()
+const cors=require("cors");
+const bodyParser = require('body-parser');
 const stripe = require('stripe')(process.env.API_KEY);
 const port = process.env.PORT;
 const hostname = process.env.HOSTNAME;
+
+
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
+
+app.use(cors(corsOptions)) 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 
 app.get('/', (req, res) =>{
@@ -12,16 +25,17 @@ app.get('/', (req, res) =>{
 })
 
 
-app.get('/create-customer', async ( req, res ) => { 
-
+app.post('/create-customer', async ( req, res ) => { 
+      // console.log(req.body);
     // params value come in req method
+      const { name, email } = req.body;
       const params = {
-        name : "John",
-        email: 'John@test.com',
+        name : name,
+        email: email,
       }
 
       const customer = await stripe.customers.create(params);
-      console.log(customer.id)
+      res.status(200).json({ status : 200, msg : customer})
 })
 
 
