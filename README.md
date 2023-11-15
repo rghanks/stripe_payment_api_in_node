@@ -15,4 +15,5 @@ In backend part there is api to
     2) add-card, 
     3) create-payment 
 
-# .env file is not upload to github to you have to add your own API_KEY, PORT, HOSTNAME
+# .env file is not upload to github.
+# you have to add your own .env file and pass the value in given variables API_KEY, PORT, HOSTNAME
