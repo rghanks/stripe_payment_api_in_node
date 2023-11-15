@@ -10,10 +10,12 @@
 
 From fronted you can create User by enter your name and email-id.
 
-In backend part there is api to 
+# In backend part there is api to 
     1) create-customer, 
     2) add-card, 
     3) create-payment 
 
 # .env file is not upload to github.
-# you have to add your own .env file and pass the value in given variables API_KEY, PORT, HOSTNAME
+# you have to add your own .env file 
+# pass the value in given variables -
+    API_KEY, PORT, HOSTNAME
